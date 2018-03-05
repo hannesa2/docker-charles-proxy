@@ -1,14 +1,15 @@
-FROM kurron/docker-jetbrains-base:latest
+FROM hannesa2/docker-jetbrains-base:latest
 
-MAINTAINER Ron Kurr <kurr@kurron.org>
+MAINTAINER Hannes Achleitner <hannes.achleitner@googlemail.com>
 
-LABEL org.kurron.ide.name="Charles Proxy" org.kurron.ide.version=4.1.5
+LABEL info.hannes.ide.name="Charles Proxy" info.hannes.ide.version=4.1.5
 
-ADD https://www.charlesproxy.com/assets/release/4.1.4/charles-proxy-4.1.4.tar.gz /tmp/ide.tar.gz
+#ADD https://www.charlesproxy.com/assets/release/4.1.4/charles-proxy-4.1.4.tar.gz /tmp/ide.tar.gz
+ADD https://www.charlesproxy.com/assets/release/4.2.1/charles-proxy-4.2.1.dmg /tmp/charles.dmg
 
-RUN mkdir -p /opt/ide && \
-    tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
-    rm /tmp/ide.tar.gz
+RUN echo Y | hdiutil attach /tmp/charles.dmg \
+    && cp -r /Volumes/Charles\ Proxy\ v4.2.1/Charles.app /Applications/ \
+    && hdiutil detach /Volumes/Charles\ Proxy\ v4.2.1/    
 
 USER developer:developer
 WORKDIR /home/developer
