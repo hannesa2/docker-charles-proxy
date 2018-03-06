@@ -11,7 +11,7 @@ services:
         - /home/vagrant:/home/developer
         stdin_open: true
         tty: true
-        user: 1000:1000
+#        user: 1000:1000
         environment:
             DISPLAY: unix:0.0
 
