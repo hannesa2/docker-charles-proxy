@@ -7,7 +7,8 @@ This project is a simple Docker image that runs the [Charles Proxy](http://www.c
 
 #Building
 Type `docker-compose build` to build the image.
-
+or `docker build -t ubuntu-app .`
+ 
 #Installation
 Docker will automatically install the newly built image into the cache.
 
@@ -17,6 +18,7 @@ Docker will automatically install the newly built image into the cache.
 
 `docker-compose up` will launch the image allowing you to begin working on projects. The Docker Compose file is 
 configured to mount your home directory into the container.  
+or `docker run -it ubuntu-app`
 
 #Troubleshooting
 
